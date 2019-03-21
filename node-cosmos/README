@@ -1,0 +1,19 @@
+https://github.com/MythosCapital/gaia-docker
+
+docker build -t magnumwallet/node-cosmos ./
+
+mkdir /mnt/volumes/cosmos/config
+docker run -it --rm --name node-cosmos -v /mnt/volumes/cosmos/:/root/.gaiad magnumwallet/node-cosmos gaiad init magnumwallet
+
+Testnet:
+curl -o /mnt/volumes/cosmos/config/genesis.json https://raw.githubusercontent.com/cosmos/testnets/master/latest/genesis.json
+Add seed: persistent_peers = "6e6d900bc53c2e029432eec302e4e187c105814b@34.65.7.199:26656"
+
+docker run -d --restart=always --name node-cosmos-testnet -v /mnt/volumes/cosmos-testnet/:/root/.gaiad -p 26657:26657 magnumwallet/node-cosmos gaiad start
+
+Mainnet:
+curl -o /mnt/volumes/cosmos/config/genesis.json https://raw.githubusercontent.com/cosmos/launch/master/genesis.json
+Add seed: seeds = "3e16af0cead27979e1fc3dac57d03df3c7a77acc@3.87.179.235:26656,ba3bacc714817218562f743178228f23678b2873@public-seed-node.cosmoshub.certus.one:26656,2626942148fd39830cb7a3acccb235fab0332d86@173.212.199.36:26656,3028c6ee9be21f0d34be3e97a59b093e15ec0658@91.205.173.168:26656,89e4b72625c0a13d6f62e3cd9d40bfc444cbfa77@34.65.6.52:26656"
+
+docker run -d --restart=always --name node-cosmos -v /mnt/volumes/cosmos/:/root/.gaiad magnumwallet/node-cosmos -p 26657:26657 gaiad start
+

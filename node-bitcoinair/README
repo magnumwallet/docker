@@ -1,0 +1,5 @@
+docker build -t magnumwallet/node-bitcoinair ./
+
+docker run -d --restart=always --name=node-bitcoinair -v /mnt/volumes/bitcoinair/:/mnt/data/ -p 1012:81 magnumwallet/node-bitcoinair
+
+docker exec -it node-bitcoinair /opt/node/src/BitcoinAir-cli --datadir=/mnt/data getinfo

@@ -1,0 +1,4 @@
+docker run -d --restart=always --name=node-anon -v /mnt/volumes/anon/:/mnt/data/ -p 1001:80 -p 2001:3130 magnumwallet/node-anon
+
+docker build -t magnumwallet/node-anon ./
+docker exec -it node-anon /opt/anon/src/anon-cli --datadir=/mnt/data getinfo

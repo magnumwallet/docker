@@ -1,0 +1,1 @@
+docker run -d --restart=always --name=node-iost -v /mnt/volumes/iost/:/var/lib/iserver -p 30000-30003:30000-30003 iostio/iost-node

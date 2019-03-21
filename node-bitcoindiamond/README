@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-bitcoindiamond ./
+
+docker run -d --restart=always --name=node-bitcoindiamond -v /mnt/volumes/bitcoindiamond/:/mnt/data/ -p 1018:81 magnumwallet/node-bitcoindiamond
+

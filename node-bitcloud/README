@@ -1,0 +1,3 @@
+docker build -t magnumwallet/node-bitcloud ./
+
+docker run -d --restart=always --name=node-bitcloud -v /mnt/volumes/bitcloud/:/mnt/data/ -p 1016:81 magnumwallet/node-bitcloud

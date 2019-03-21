@@ -1,0 +1,4 @@
+docker run -d --restart=always --name=node-gxx -v /mnt/volumes/gxx/:/mnt/data/ -p 1011:29200 -p 29100:29100 magnumwallet/node-gxx
+
+docker build -t magnumwallet/node-gxx ./
+docker exec -it node-gxx /opt/gravitycoin/gravitycoin-cli --datadir=/mnt/data getinfo

@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-electra -v /mnt/volumes/electra/:/mnt/data/ -p 1019:81 magnumwallet/node-electra
+
+docker build -t magnumwallet/node-electra ./

@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-litecoincash -v /mnt/volumes/litecoincash/:/mnt/data/ -p 1020:81 magnumwallet/node-litecoincash
+
+docker build -t magnumwallet/node-litecoincash ./

@@ -1,0 +1,2 @@
+docker run -it --name redis --net host redis
+docker run -it --name redis --net host redis redis-server /etc/redis/redis.conf

@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-bitsend -v /mnt/volumes/bitsend/:/mnt/data/ -p 1015:81 magnumwallet/node-bitsend
+
+docker build -t magnumwallet/node-bitsend ./

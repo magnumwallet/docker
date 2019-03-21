@@ -1,0 +1,30 @@
+{
+  "network": "livenet",
+  "port": 80,
+  "services": [
+    "bitcoind",
+    "insight-api-komodo",
+    "insight-ui-komodo",
+    "web"
+  ],
+  "servicesConfig": {
+    "bitcoind": {
+      "spawn": {
+        "datadir": "/mnt/data",
+        "exec": "/opt/komodo/src/komodod"
+      }
+    },
+    "insight-ui-komodo": {
+      "apiPrefix": "api",
+      "routePrefix": ""
+    },
+    "insight-api-komodo": {
+      "routePrefix": "api",
+      "disableRateLimiter": true,
+      "rateLimiterOptions": {
+        "whitelistLimit": 2147483647,
+        "limit": 2147483647
+      }
+    }
+  }
+}
