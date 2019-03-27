@@ -6,18 +6,15 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN git clone -b bitcore https://github.com/wo01/zcash.git
+RUN git clone https://github.com/zcash/zcash.git
+RUN mv zcash node
 
-WORKDIR /opt/zcash
-RUN ./zcutil/build.sh -j$(nproc)
-RUN ./zcutil/fetch-params.sh
+WORKDIR /opt/node
+RUN ./autogen.sh
+RUN ./configure  --without-gui
+RUN make -j$(nproc)
 
-WORKDIR /opt
-RUN npm install https://github.com/wo01/bitcore-node-zcash
-RUN ./node_modules/bitcore-node-zcash/bin/bitcore-node create explorer
-
-WORKDIR /opt/explorer
-RUN ../node_modules/bitcore-node-zcash/bin/bitcore-node install https://github.com/wo01/insight-api-zcash.git https://github.com/wo01/insight-ui-zcash.git
+RUN ln -s /opt/node/src/zcashd /opt/node/src/node
 
 # ----
 

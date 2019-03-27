@@ -1,4 +1,4 @@
-docker run -d --restart=always --name=node-zcash -v /mnt/volumes/zcash/:/mnt/data/ -p 1007:80 -p 2007:3130 magnumwallet/node-zcash
-
 docker build -t magnumwallet/node-zcash ./
-docker exec -it node-zcash /opt/zcash/src/zcash-cli --datadir=/mnt/data getinfo
+
+docker run -d --restart=always --name=node-zcash -v /mnt/volumes/zcash/:/mnt/data/ -p 1007:81 magnumwallet/node-zcash
+
