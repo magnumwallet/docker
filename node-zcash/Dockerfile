@@ -10,9 +10,8 @@ RUN git clone https://github.com/zcash/zcash.git
 RUN mv zcash node
 
 WORKDIR /opt/node
-RUN ./autogen.sh
-RUN ./configure  --without-gui
-RUN make -j$(nproc)
+RUN ./zcutil/fetch-params.sh
+RUN ./zcutil/build.sh -j$(nproc)
 
 RUN ln -s /opt/node/src/zcashd /opt/node/src/node
 
