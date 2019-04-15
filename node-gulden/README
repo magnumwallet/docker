@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-gulden ./
+
+docker run -d --restart=always --name=node-gulden -v /mnt/volumes/gulden/:/mnt/data/ -p 1024:81 magnumwallet/node-gulden
+
