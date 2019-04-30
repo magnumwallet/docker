@@ -1,20 +1,22 @@
 FROM magnumwallet/base-full
 
+# ----
+
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
 
 # ----
 
 WORKDIR /opt
-RUN git clone https://github.com/zcash/zcash.git
-# sapling viewing key: https://github.com/zcash/zcash/pull/3822/files
-RUN mv zcash node
+RUN git clone https://github.com/dashpay/dash.git
+RUN mv dash node
 
 WORKDIR /opt/node
-RUN ./zcutil/fetch-params.sh
-RUN ./zcutil/build.sh -j$(nproc)
+RUN ./autogen.sh
+RUN ./configure  --without-gui
+RUN make -j$(nproc)
 
-RUN ln -s /opt/node/src/zcashd /opt/node/src/node
+RUN ln -s /opt/node/src/dashd /opt/node/src/node
 
 # ----
 

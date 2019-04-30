@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-dash ./
+
+docker run -d --restart=always --name=node-dash -v /mnt/volumes/dash/:/mnt/data/ -p 1025:81 magnumwallet/node-dash
+
