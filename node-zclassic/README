@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-zclassic ./
+
+docker run -d --restart=always --name=node-zclassic -v /mnt/volumes/zclassic/:/mnt/data/ -p 1026:81 magnumwallet/node-zclassic
+

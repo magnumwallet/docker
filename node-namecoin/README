@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-namecoin ./
+
+docker run -d --restart=always --name=node-namecoin -v /mnt/volumes/namecoin/:/mnt/data/ -p 1027:81 magnumwallet/node-namecoin
+
