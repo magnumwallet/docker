@@ -8,15 +8,12 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN git clone https://github.com/dashpay/dash.git
-RUN mv dash node
+RUN wget https://github.com/dashpay/dash/releases/download/v0.14.0.0-rc4/dashcore-0.14.0.0-rc4-x86_64-linux-gnu.tar.gz
+RUN tar -axf dashcore-0.14.0.0-rc4-x86_64-linux-gnu.tar.gz
+RUN mv dashcore-0.14.0 node
 
 WORKDIR /opt/node
-RUN ./autogen.sh
-RUN ./configure  --without-gui
-RUN make -j$(nproc)
-
-RUN ln -s /opt/node/src/dashd /opt/node/src/node
+RUN ln -s /opt/node/bin/dashd /opt/node/bin/node
 
 # ----
 
