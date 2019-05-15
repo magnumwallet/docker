@@ -26,6 +26,7 @@ RUN git clone https://github.com/ZclassicCommunity/zclassic.git
 RUN mv zclassic node
 
 WORKDIR /opt/node
+RUN ./zcutil/fetch-params.sh
 RUN ./zcutil/build.sh -j$(nproc)
 
 RUN ln -s /opt/node/src/zclassicd /opt/node/src/node
