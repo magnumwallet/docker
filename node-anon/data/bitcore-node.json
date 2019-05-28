@@ -1,6 +1,6 @@
 {
   "network": "livenet",
-  "port": 80,
+  "port": 8000,
   "services": [
     "bitcoind",
     "insight-api-anon",
