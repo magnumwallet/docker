@@ -1,20 +1,23 @@
 FROM magnumwallet/base-full
 
+# ----
+
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
 
 # ----
 
+ARG repo=litecoincash-project/litecoincash
+ARG platform=x86_64
+
+# ----
+
 WORKDIR /opt
-RUN git clone https://github.com/litecoincash-project/litecoincash.git
-RUN mv litecoincash node
+RUN curl -s https://api.github.com/repos/$repo/releases/latest | grep browser_download_url | grep $platform | cut -d '"' -f 4 | wget -qi -
+RUN tar -xf `ls -t ./ | head -1` && mv `ls ./ | head -1` node
 
 WORKDIR /opt/node
-RUN ./autogen.sh
-RUN ./configure  --without-gui
-RUN make -j$(nproc)
-
-RUN ln -s /opt/node/src/litecoincashd /opt/node/src/node
+RUN ln -s `find /opt/node/bin -name "*d" | head -1` /opt/node/bin/node
 
 # ----
 
