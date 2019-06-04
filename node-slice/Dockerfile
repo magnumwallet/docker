@@ -6,15 +6,15 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN git clone https://github.com/creamcoin/cream.git
-RUN mv cream node
+RUN git clone https://github.com/slicecoincore/slice.git
+RUN mv slice node
 
 WORKDIR /opt/node
 RUN ./autogen.sh
 RUN ./configure  --without-gui
 RUN make -j$(nproc)
 
-RUN ln -s /opt/node/src/creamd /opt/node/src/node
+RUN ln -s /opt/node/src/sliced /opt/node/src/node
 
 # ----
 
