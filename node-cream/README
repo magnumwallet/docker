@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-cream -v /mnt/volumes/cream/:/mnt/data/ -p 1029:1000 magnumwallet/node-cream
+
+docker build -t magnumwallet/node-cream ./
