@@ -16,8 +16,8 @@ RUN if [ "${DEV_BUILD}" = "true" ]; then wget -O jdk.tar.gz https://download.jav
 RUN if [ "${DEV_BUILD}" = "true" ]; then tar -xf jdk.tar.gz; fi
 RUN if [ "${DEV_BUILD}" = "true" ]; then rm -f jdk.tar.gz; fi
 
-RUN wget https://github.com/aionnetwork/aion/releases/download/v0.3.2/aion-v0.3.2.a0b68b7-2018-11-29.tar.bz2
-RUN tar -axf aion-v0.3.2.a0b68b7-2018-11-29.tar.bz2
+RUN wget https://github.com/aionnetwork/aion/releases/download/v0.4.0.1/aion-v0.4.0.1.46e0cb3-2019-05-29.tar.bz2
+RUN tar -axf aion-v0.4.0.1.46e0cb3-2019-05-29.tar.bz2
 RUN cd /opt/aion/
 
 # ----
