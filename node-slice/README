@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-slice -v /mnt/volumes/slice/:/mnt/data/ -p 1030:1000 magnumwallet/node-slice
+
+docker build -t magnumwallet/node-slice ./
