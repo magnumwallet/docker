@@ -1,4 +1,4 @@
-FROM magnumwallet/base-full
+FROM debian:9.7
 
 # ----
 
@@ -7,17 +7,19 @@ SHELL ["/bin/bash", "-c"]
 
 # ----
 
-ARG repo=litecoincash-project/litecoincash
-ARG platform=x86_64
-
-# ----
+RUN apt-get update && apt-get install -y git build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libdb-dev libdb++-dev libzmq3-dev mc nano
 
 WORKDIR /opt
-RUN wget https://github.com/creamcoin/cream/raw/master/releases/crm-bins-ubuntu18.04.zip
-RUN unzip crm-bins-ubuntu18.04.zip node
+RUN git clone https://github.com/creamcoin/cream.git
+RUN mv cream node
 
 WORKDIR /opt/node
-RUN ln -s `find /opt/node/bin -name "*d" | head -1` /opt/node/bin/node
+RUN ./autogen.sh
+RUN ./configure --without-gui --with-incompatible-bdb
+RUN make -j$(nproc)
+
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/creamd /opt/node/bin/node
 
 # ----
 

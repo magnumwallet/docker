@@ -4,5 +4,5 @@ docker run -d --restart=always --name=node-aion -v /mnt/volumes/aion/:/mnt/data/
 
 docker exec -it node-aion /bin/bash
 
-FIX /mnt/data/mainnet/config/config.xml => <rpc active="false" ip="127.0.0.1" port="8545">
+FIX /mnt/data/mainnet/config/config.xml: <rpc active="false" ip="127.0.0.1" port="8545"> => <rpc active="true" ip="0.0.0.0" port="8545">
 
