@@ -10,15 +10,14 @@ RUN git clone https://github.com/bitcoin/bitcoin.git
 RUN mv bitcoin node
 
 WORKDIR /opt/node
-RUN ls -la
-RUN ls -la
 
 RUN ./autogen.sh
 RUN ./configure  --without-gui
 RUN make -j$(nproc)
 RUN make install
 
-RUN ln -s /opt/node/src/bitcoind /opt/node/node
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/bitcoind /opt/node/bin/node
 
 # ----
 

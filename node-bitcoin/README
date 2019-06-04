@@ -1,5 +1,5 @@
 docker build -t magnumwallet/node-bitcoin ./
 
-docker run -d --restart=always --name=node-bitcoin -v /mnt/volumes/bitcoin/:/mnt/data/ -p 28332:28332 -p 2013:3130 magnumwallet/node-bitcoin
+docker run -d --restart=always --name=node-bitcoin -v /mnt/volumes/bitcoin/:/mnt/data/ -p 1013:1000 magnumwallet/node-bitcoin
 
 docker exec -it node-bitcoin /opt/bitcoin/src/bitcoin-cli --datadir=/mnt/data getinfo
