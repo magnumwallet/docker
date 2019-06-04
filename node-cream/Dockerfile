@@ -1,20 +1,23 @@
 FROM magnumwallet/base-full
 
+# ----
+
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
 
 # ----
 
+ARG repo=litecoincash-project/litecoincash
+ARG platform=x86_64
+
+# ----
+
 WORKDIR /opt
-RUN git clone https://github.com/creamcoin/cream.git
-RUN mv cream node
+RUN wget https://github.com/creamcoin/cream/raw/master/releases/crm-bins-ubuntu18.04.zip
+RUN unzip crm-bins-ubuntu18.04.zip node
 
 WORKDIR /opt/node
-RUN ./autogen.sh
-RUN ./configure  --without-gui
-RUN make -j$(nproc)
-
-RUN ln -s /opt/node/src/creamd /opt/node/src/node
+RUN ln -s `find /opt/node/bin -name "*d" | head -1` /opt/node/bin/node
 
 # ----
 
