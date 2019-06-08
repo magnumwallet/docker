@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-zerozed -v /mnt/volumes/zerozed/:/mnt/data/ -p 1031:1000 magnumwallet/node-zerozed
+
+docker build -t magnumwallet/node-zerozed ./
