@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-zcoin -v /mnt/volumes/zcoin/:/mnt/data/ -p 1032:1000 magnumwallet/node-zcoin
+
+docker build -t magnumwallet/node-zcoin ./
