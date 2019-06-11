@@ -1,4 +1,3 @@
+docker run -d --restart=always --name=node-myriadcoin -v /mnt/volumes/myriadcoin/:/mnt/data/ -p 1021:1000 magnumwallet/node-myriadcoin
+
 docker build -t magnumwallet/node-myriadcoin ./
-
-docker run -d --restart=always --name=node-myriadcoin -v /mnt/volumes/myriadcoin/:/mnt/data/ -p 1021:81 magnumwallet/node-myriadcoin
-
