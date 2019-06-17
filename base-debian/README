@@ -1,0 +1,1 @@
+docker build -t magnumwallet/base-debian ./

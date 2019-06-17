@@ -1,4 +1,4 @@
-FROM debian:9.7
+FROM magnumwallet/base-debian
 
 # ----
 

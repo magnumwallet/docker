@@ -1,4 +1,6 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
+
+# ----
 
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
@@ -7,17 +9,16 @@ SHELL ["/bin/bash", "-c"]
 
 WORKDIR /opt
 RUN git clone https://github.com/jl777/komodo
+RUN mv komodo node
 
-WORKDIR /opt/komodo
-RUN ./zcutil/build.sh -j$(nproc)
+WORKDIR /opt/node
+RUN ./autogen.sh
 RUN ./zcutil/fetch-params.sh
+RUN ./configure --without-gui --with-incompatible-bdb
+RUN make -j$(nproc)
 
-WORKDIR /opt
-RUN npm install https://github.com/DeckerSU/bitcore-node-komodo.git
-RUN ./node_modules/bitcore-node-komodo/bin/bitcore-node create komodo-explorer
-
-WORKDIR /opt/komodo-explorer
-RUN ../node_modules/bitcore-node-komodo/bin/bitcore-node install https://github.com/DeckerSU/insight-api-komodo.git https://github.com/DeckerSU/insight-ui-komodo.git
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/komodod /opt/node/bin/node
 
 # ----
 

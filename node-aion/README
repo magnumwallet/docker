@@ -1,6 +1,6 @@
 docker build -t magnumwallet/node-aion ./
 
-docker run -d --restart=always --name=node-aion -v /mnt/volumes/aion/:/mnt/data/ -p 8545:8545 -p 1004:30303 magnumwallet/node-aion
+docker run -d --restart=always --name=node-aion -v /mnt/volumes/aion/:/mnt/data/ -p 1004:8545 magnumwallet/node-aion
 
 docker exec -it node-aion /bin/bash
 

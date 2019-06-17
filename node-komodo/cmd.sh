@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/komodo-explorer/node_modules/bitcore-node-komodo/bin/bitcore-node start
+/opt/node/bin/node -datadir=/mnt/data
