@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-doge -v /mnt/volumes/doge/:/mnt/data/ -p 1034:1000 magnumwallet/node-doge
+
+docker build -t magnumwallet/node-doge ./
