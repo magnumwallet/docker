@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-nix -v /mnt/volumes/nix/:/mnt/data/ -p 1033:1000 magnumwallet/node-nix
+
+docker build -t magnumwallet/node-nix ./
