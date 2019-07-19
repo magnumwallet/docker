@@ -8,7 +8,7 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     chmod a+x /usr/local/bin/* && \
     apk add --no-cache git build-base openssl && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community leveldb-dev && \
-    pip install aiohttp pylru plyvel pyskein x13-hash && \
+    pip install aiohttp pylru plyvel pyskein git+https://github.com/bitcoinplusorg/x13-hash && \
     git clone -b $VERSION https://github.com/magnumwallet/electrumx.git && \
     cd electrumx && \
     python setup.py install && \
