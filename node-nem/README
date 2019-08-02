@@ -1,0 +1,1 @@
+docker run -d --restart=always --name=node-nem -v /mnt/volumes/nem/:/root/nem -p 7890:7890 -p 7778:7778 criptalia/nem-node
