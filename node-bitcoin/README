@@ -10,5 +10,6 @@ docker run -d --restart=always \
 ruimarinho/bitcoin-core \
 -printtoconsole \
 -rpcbind=127.0.0.1 \
--rpcallowip=172.17.0.0/16 \
+-rpcbind=node-bitcoin \
+-rpcallowip=0.0.0.0/32 \
 -rpcauth='rpc:c7cef1c2662f2ade5d0acf314b69758f$2211f5d71612942fc70bbb0f365a0eac9eeb4df59723503562a3d7e7534827b8'
