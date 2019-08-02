@@ -1,4 +1,4 @@
-docker run -d --restart=always --name=node-pivx -v /mnt/volumes/pivx/:/mnt/data/ -p 1014:81 magnumwallet/node-pivx
+docker run -d --restart=always --name=node-pivx -v /mnt/volumes/pivx/:/mnt/data/ -p 1036:1000 magnumwallet/node-pivx
 
 docker build -t magnumwallet/node-pivx ./
 docker exec -it node-pivx /optnode/src/node-cli --datadir=/mnt/data getinfo
