@@ -1,4 +1,4 @@
 docker build -t magnumwallet/node-peercoin ./
 
-docker run -d --restart=always --name=node-peercoin -v /mnt/volumes/peercoin/:/mnt/data/ -p 1028:81 magnumwallet/node-peercoin
+docker run -d --restart=always --name=node-peercoin -v /mnt/volumes/peercoin/:/mnt/data/ -p 1028:1000 magnumwallet/node-peercoin
 

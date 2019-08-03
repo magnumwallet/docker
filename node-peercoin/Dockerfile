@@ -1,18 +1,4 @@
-FROM debian
-MAINTAINER Smirnov Dmitry <smdmitry@gmail.com>
-
-RUN apt-get update && apt-get install -y --no-install-recommends mc nano wget curl git sudo ca-certificates rsync libcurl4-openssl-dev rsync
-
-RUN apt-get update && apt-get install -y --no-install-recommends \
-       apt-utils \
-       build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils \
-       python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev \
-       libzmq3-dev make m4 gcc aspcud ocaml opam libgmp-dev libhidapi-dev pkg-config rsync m4 patch unzip libev-dev \
-       bzip2 lsb-release jq locales net-tools libicu-dev libedit-dev libedit2 libffi6 libtinfo5 \
-       g++ cmake llvm-4.0 libjsoncpp1 libjsoncpp-dev libboost-dev libzmq5 libsqlite3-dev libgmp-dev git build-essential libtool \
-        autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils libboost-all-dev software-properties-common
-
-RUN apt-get update && apt-get install -y --no-install-recommends libdb++-dev
+FROM debian:9.7
 
 # ----
 
@@ -21,16 +7,19 @@ SHELL ["/bin/bash", "-c"]
 
 # ----
 
+RUN apt-get update && apt-get install -y git build-essential libtool autotools-dev automake pkg-config libssl-dev libevent-dev bsdmainutils python3 libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-test-dev libboost-thread-dev libdb-dev libdb++-dev libzmq3-dev libboost1.48-* libboost-system-dev libboost-filesystem-dev libboost-chrono-dev libboost-program-options-dev libboost-test-dev libboost-thread-dev scrypt zlib1g-dev wget curl mc nano libunbound-dev libcurl4-openssl-dev
+
 WORKDIR /opt
 RUN git clone https://github.com/peercoin/peercoin.git
 RUN mv peercoin node
 
 WORKDIR /opt/node
 RUN ./autogen.sh
-RUN ./configure --without-gui --disable-wallet
+RUN ./configure --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
 
-RUN mkdir /opt/node/bin/ && ln -s /opt/node/src/peercoind /opt/node/bin/node
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/peercoind /opt/node/bin/node
 
 # ----
 
@@ -44,4 +33,3 @@ COPY cmd.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["cmd.sh", ""]
-
