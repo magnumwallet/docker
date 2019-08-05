@@ -19,7 +19,7 @@ RUN mv BitSend node
 
 WORKDIR /opt/node
 RUN ./autogen.sh
-RUN ./configure --without-gui --with-incompatible-bdb
+RUN ./configure --without-gui --with-incompatible-bdb --disable-wallet
 RUN make -j$(nproc)
 
 RUN mkdir /opt/node/bin
