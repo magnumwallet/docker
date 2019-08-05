@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/bitcoinzero/src/bitcoinzerod -datadir=/mnt/data
+/opt/node/bin/node -datadir=/mnt/data

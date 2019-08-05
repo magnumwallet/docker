@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/gravitycoin/src/GravityCoind -datadir=/mnt/data
+/opt/node/bin/node -datadir=/mnt/data
