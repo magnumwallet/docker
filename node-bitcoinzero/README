@@ -1,4 +1,4 @@
-docker run -d --restart=always --name=node-bitcoinzero -v /mnt/volumes/bitcoinzero/:/mnt/data/ -p 1009:29202 -p 29301:29301 -p 2009:29202 magnumwallet/node-bitcoinzero
+docker run -d --restart=always --name=node-bitcoinzero -v /mnt/volumes/bitcoinzero/:/mnt/data/ -p 1009:1000 magnumwallet/node-bitcoinzero
 
 docker build -t magnumwallet/node-bitcoinzero ./
 docker exec -it node-bitcoinzero /opt/bitcoinzero/src/bitcoinzero-cli --datadir=/mnt/data getinfo
