@@ -1,0 +1,7 @@
+docker run -d --restart=always --name=node-monero -v /mnt/volumes/monero/:/root/openmonero/ -p 1069:80 magnumwallet/node-monero
+
+docker build -t magnumwallet/node-monero ./
+
+docker run -it --rm magnumwallet/node-monero ./openmonero
+
+/root/monero/build/release/bin/monerod
