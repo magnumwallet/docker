@@ -12,6 +12,8 @@ RUN git clone --recursive https://github.com/moneroexamples/openmonero.git
 WORKDIR /root/monero
 RUN USE_SINGLE_BUILDDIR=1 make -j4
 
+RUN apt-get install libcurl4-openssl-dev
+
 WORKDIR /root/openmonero
 RUN mkdir ./build
 WORKDIR ./build

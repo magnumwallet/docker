@@ -17,6 +17,7 @@ WORKDIR /opt/node
 RUN ./autogen.sh
 RUN ./configure --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
+RUN make install
 
 RUN mkdir /opt/node/bin
 RUN ln -s /opt/node/src/syscoind /opt/node/bin/node
