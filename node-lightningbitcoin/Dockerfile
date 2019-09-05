@@ -17,7 +17,7 @@ RUN ./configure --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
 
 RUN mkdir /opt/node/bin
-RUN ln -s /opt/node/src/lbtcd /opt/node/bin/node
+RUN ln -s /opt/node/src/bitcoind /opt/node/bin/node
 
 # ----
 
