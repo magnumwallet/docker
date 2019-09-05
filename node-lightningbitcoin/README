@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-lbtc -v /mnt/volumes/lbtc/:/mnt/data/ -p 1039:1000 magnumwallet/node-lbtc
+
+docker build -t magnumwallet/node-lbtc ./
