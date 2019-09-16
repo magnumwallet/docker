@@ -12,7 +12,7 @@ RUN git clone --recursive https://github.com/Beldex-Coin/beldex-web-wallet.git
 WORKDIR /root/beldex
 RUN USE_SINGLE_BUILDDIR=1 make -j4
 
-RUN apt-get install libcurl4-openssl-dev
+RUN apt-get install libcurl4-openssl-dev libpcsclite-dev
 
 WORKDIR /root/beldex-web-wallet
 RUN mkdir ./build

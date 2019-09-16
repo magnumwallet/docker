@@ -1,0 +1,6 @@
+Countly:
+docker run -d --restart=always --name=countly -p 84:80 -v /mnt/volumes/countly:/var/lib/mongodb countly/countly-server
+
+MariaDB:
+docker run -d --restart=always --name ommariadb -v /mnt/volumes/ommariadb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mariadb
+docker exec -i ommariadb mysql -uroot -proot < xxx.sql
