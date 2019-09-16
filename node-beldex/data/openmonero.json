@@ -1,0 +1,67 @@
+{
+  "daemon-url" :
+  {
+    "_comment" : "RPC urls to monero deamon",
+    "mainnet"  : "http://127.0.0.1:19091",
+    "testnet"  : "http://127.0.0.1:29091",
+    "stagenet" : "http://127.0.0.1:39091"
+  },
+  "blockchain-path" :
+  {
+    "_comment" : "if paths are empty, default Monero paths will be used",
+    "mainnet"  : "",
+    "testnet"  : "",
+    "stagenet" : ""
+  },
+  "database" :
+  {
+    "_comment" : "how should the backend connect to the mysql database",
+    "url"      : "127.0.0.1",
+    "port"     : 3306,
+    "dbname"   : "openbeldex",
+    "user"     : "root",
+    "password" : "root"
+  },
+  "database_test":
+  {
+    "_comment" : "how should the backend connect to the test mysql database",
+    "url"      : "127.0.0.1",
+    "port"     : 3306,
+    "dbname"   : "openbeldex_test",
+    "user"     : "root",
+    "password" : "root"
+  },
+  "wallet_import" :
+  {
+    "_comment": "if fee is 0, then importing is free. fee is in base 1e9, e.g., 0.1 BELDEX is 0.1 x 1e9 = 100000000",
+    "fee"     : 0,
+    "testnet" :
+    {
+      "address" : "",
+      "viewkey" : ""
+    },
+    "mainnet" :
+    {
+      "address" : "",
+      "viewkey" : ""
+    },
+    "stagenet" :
+    {
+      "address" : "",
+      "viewkey" : ""
+    }
+  },
+  "refresh_block_status_every_seconds" : 10,
+  "blocks_search_lookahead"            : 200,
+  "search_thread_life_in_seconds"      : 120,
+  "max_number_of_blocks_to_import"     : 132000,
+  "mysql_ping_every_seconds"           : 300,
+  "ssl" :
+  {
+    "enable" : false,
+    "_comment": "below are example paths to crt and key files need to be given",
+    "ssl-key": "file:///tmp/server.key",
+    "ssl-crt": "file:///tmp/server.crt",
+    "dh-pem" : "file:///tmp/dh2048.pem"
+  }
+}

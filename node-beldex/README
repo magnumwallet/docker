@@ -1,0 +1,19 @@
+docker run -d --restart=always --name=node-beldex -v /mnt/volumes/beldex:/root/.bitmonero/ --net host magnumwallet/node-beldex /root/.bitmonero/start.sh
+
+docker build -t magnumwallet/node-beldex ./
+
+----
+
+docker run -d --restart=always --name=node-monero -v /mnt/volumes/monero:/root/.bitmonero/ --net host magnumwallet/node-monero /root/monero/build/release/bin/monerod --non-interactive
+docker run -it --rm -v /mnt/volumes/monero:/root/.bitmonero/ --net host magnumwallet/node-monero ./openmonero -c /root/.bitmonero/openmonero.json
+
+-----
+
+docker run --rm -it -p 18081:18081 -v /mnt/volumes/monero/:/monero xmrto/monero --data-dir /monero
+docker run -it -v /mnt/volumes/beldex/chain:/root/.beldex -v /mnt/volumes/beldex/wallet:/wallet -p 19090:19090 beldex
+docker run -it --rm -v /mnt/volumes/monero:/root/.bitmonero/ magnumwallet/node-monero ./openmonero -c /root/.bitmonero/openmonero.json
+docker run -it --rm -v /mnt/volumes/beldex/chain:/root/.beldex -v /mnt/volumes/beldex/wallet:/wallet -p 19090:19090 beldex
+docker run -it --rm -p 18081:18081 -v /mnt/volumes/monero/:/monero xmrto/monero --data-dir /monero
+docker run -it --rm --net host -v /mnt/volumes/monero/:/monero xmrto/monero --data-dir /monero
+
+
