@@ -1,0 +1,5 @@
+docker build -t magnumwallet/node-footballcoin ./ --no-cache
+
+docker run -d --restart=always --name=node-footballcoin -v /mnt/volumes/footballcoin/:/mnt/data/ -p 1040:1000 magnumwallet/node-footballcoin
+
+
