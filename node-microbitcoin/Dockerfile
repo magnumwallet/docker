@@ -1,4 +1,6 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
+
+# ----
 
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
