@@ -16,7 +16,8 @@ RUN ./autogen.sh
 RUN ./configure  --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
 
-RUN ln -s /opt/node/src/microbitcoind /opt/node/src/node
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/microbitcoind /opt/node/bin/node
 
 # ----
 
