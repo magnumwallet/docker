@@ -1,4 +1,4 @@
 docker build -t magnumwallet/node-microbitcoin ./
 
-docker run -d --restart=always --name=node-microbitcoin -v /mnt/volumes/microbitcoin/:/mnt/data/ -p 1023:81 magnumwallet/node-microbitcoin
+docker run -d --restart=always --name=node-microbitcoin -v /mnt/volumes/microbitcoin/:/mnt/data/ -p 1023:1000 magnumwallet/node-microbitcoin
 
