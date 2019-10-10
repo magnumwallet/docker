@@ -13,7 +13,7 @@ RUN mv MicroBitcoin node
 
 WORKDIR /opt/node
 RUN ./autogen.sh
-RUN ./configure  --without-gui
+RUN ./configure  --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
 
 RUN ln -s /opt/node/src/microbitcoind /opt/node/src/node
