@@ -4,11 +4,14 @@ FROM python:3.7-alpine3.7
 COPY ./bin /usr/local/bin
 COPY ./VERSION /tmp
 
+RUN pip install --upgrade pip
 RUN VERSION=$(cat /tmp/VERSION) && \
     chmod a+x /usr/local/bin/* && \
     apk add --no-cache git build-base openssl && \
-    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/community leveldb-dev && \
-    pip install aiohttp pylru plyvel pyskein git+https://github.com/bitcoinplusorg/x13-hash pivx-quark-hash quark_hash x11_hash xevan-hash && \
+    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main leveldb-dev && \
+#    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
+    pip install aiohttp pylru plyvel websockets && \
+    pip install pyskein git+https://github.com/bitcoinplusorg/x13-hash pivx-quark-hash quark_hash x11_hash xevan-hash git+https://github.com/Jenova7/nist5_hash && \
     git clone -b $VERSION https://github.com/magnumwallet/electrumx.git && \
     cd electrumx && \
     python setup.py install && \
@@ -23,6 +26,7 @@ ENV SERVICES=tcp://:50001,ssl://:50002,wss://:50004,rpc://0.0.0.0:8000
 ENV SSL_CERTFILE ${DB_DIRECTORY}/electrumx.crt
 ENV SSL_KEYFILE ${DB_DIRECTORY}/electrumx.key
 ENV HOST ""
+#ENV DB_ENGINE "rocksdb"
 WORKDIR /data
 
 EXPOSE 50001 50002 50004 8000

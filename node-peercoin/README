@@ -2,3 +2,5 @@ docker build -t magnumwallet/node-peercoin ./
 
 docker run -d --restart=always --name=node-peercoin -v /mnt/volumes/peercoin/:/mnt/data/ -p 1028:1000 magnumwallet/node-peercoin
 
+git clone https://github.com/peercoin/electrumx-docker && cd electrumx-docker
+docker build -t peerchemist/electrumx ./
