@@ -4,3 +4,9 @@ docker run -d --restart=always --name=countly -p 84:80 -v /mnt/volumes/countly:/
 MariaDB:
 docker run -d --restart=always --name ommariadb -v /mnt/volumes/ommariadb:/var/lib/mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root -d mariadb
 docker exec -i ommariadb mysql -uroot -proot < xxx.sql
+
+Minio (Amazon S3):
+docker run -d --restart=always --name minio \
+-e "MINIO_ACCESS_KEY=VVH6TJ1YJ8IHFH0GBCWCCMOZOY2AUP" \
+-e "MINIO_SECRET_KEY=pweUPLHCNysRHkfJp1JGOVbjjzpiNd" \
+-v /mnt/volumes/minio:/data -p 86:9000 minio/minio server /data

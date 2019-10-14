@@ -1,3 +1,7 @@
+docker run -d --restart=always --name=node-chainzilla -v /mnt/volumes/chainzilla/:/mnt/data/ -p 1045:80 -p 8045:3130 magnumwallet/node-chainzilla
+
+
+
 docker run -d --restart=always --name=node-chainzilla -v /mnt/volumes/chainzilla/:/mnt/data/ -p 1010:80 -p 2010:3130 magnumwallet/node-chainzilla
 
 docker build -t magnumwallet/node-chainzilla ./
