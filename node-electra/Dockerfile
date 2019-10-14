@@ -1,4 +1,6 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
+
+# ----
 
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
@@ -11,10 +13,11 @@ RUN mv electra-core node
 
 WORKDIR /opt/node
 RUN ./autogen.sh
-RUN ./configure  --without-gui
+RUN ./configure --without-gui --with-incompatible-bdb --disable-tests
 RUN make -j$(nproc)
 
-RUN ln -s /opt/node/src/electrad /opt/node/src/node
+RUN mkdir /opt/node/bin
+RUN ln -s /opt/node/src/electrad /opt/node/bin/node
 
 # ----
 
