@@ -17,7 +17,7 @@ RUN ./configure --without-gui --with-incompatible-bdb
 RUN make -j$(nproc)
 
 RUN mkdir /opt/node/bin
-RUN ln -s /opt/node/src/netboxd /opt/node/bin/node
+RUN ln -s /opt/node/src/nbxd /opt/node/bin/node
 
 # ----
 
