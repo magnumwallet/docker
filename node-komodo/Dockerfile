@@ -12,13 +12,12 @@ RUN git clone https://github.com/jl777/komodo
 RUN mv komodo node
 
 WORKDIR /opt/node
-RUN ./autogen.sh
+RUN ./zcutil/build.sh -j$(nproc)
 RUN ./zcutil/fetch-params.sh
-RUN ./configure --without-gui --with-incompatible-bdb
-RUN make -j$(nproc)
 
 RUN mkdir /opt/node/bin
 RUN ln -s /opt/node/src/komodod /opt/node/bin/node
+
 
 # ----
 
