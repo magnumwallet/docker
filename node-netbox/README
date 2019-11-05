@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-netbox -v /mnt/volumes/netbox/:/mnt/data/ -p 1047:1000 magnumwallet/node-netbox
+
+docker build -t magnumwallet/node-netbox ./
