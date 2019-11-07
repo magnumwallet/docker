@@ -1,4 +1,7 @@
 docker build -t magnumwallet/node-microbitcoin ./
 
-docker run -d --restart=always --name=node-microbitcoin -v /mnt/volumes/microbitcoin/:/mnt/data/ -p 1023:1000 magnumwallet/node-microbitcoin
+docker run -d --restart=always --name=node-microbitcoin -v /mnt/volumes/microbitcoin/:/mnt/data/ -p 1023:1000 magnumwallet/node-microbitcoin  /opt/node/bin/node -datadir=/mnt/data -server=1 -listen=1 -rpcport=1000 -rpcbind=0.0.0.0 -rpcallowip=0.0.0.0/0 -rpcuser=rpc -rpcpassword=password -port=2000 -txindex=1 -printtoconsole=1
+
+modify our electrum: https://github.com/MicroBitcoinOrg/ElectrumX.git
+docker build -t microbitcoin/electrumx ./
 

@@ -18,7 +18,6 @@ RUN ./zcutil/fetch-params.sh
 RUN mkdir /opt/node/bin
 RUN ln -s /opt/node/src/komodod /opt/node/bin/node
 
-
 # ----
 
 COPY ./data /opt/data/

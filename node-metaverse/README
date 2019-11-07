@@ -1,0 +1,1 @@
+docker run -d --restart=always --name=node-metaverse -v /mnt/volumes/metaverse/:/root/.metaverse -p 1046:8820 -p 5251:5251 -p 8820:8820 -p 8821:8821 jowenshaw/metaverse
