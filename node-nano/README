@@ -1,0 +1,6 @@
+docker run -d --restart=always --name=node-nano \
+  -p 7075:7075/udp \
+  -p 7075:7075 \
+  -p 127.0.0.1:1048:7076 \
+  -v /mnt/volumes/nano:/root \
+  nanocurrency/nano:latest
