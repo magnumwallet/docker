@@ -1,0 +1,4 @@
+docker run -d --restart=always --name=node-digibyte -v /mnt/volumes/digibyte/:/mnt/data/ -p 1049:1000 magnumwallet/node-digibyte
+
+docker build -t magnumwallet/node-digibyte ./
+
