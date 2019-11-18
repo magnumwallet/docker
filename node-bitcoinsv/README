@@ -1,4 +1,4 @@
-docker build -t magnumwallet/node-bitcoincash ./
+docker build -t magnumwallet/node-bitcoinsv ./
 
-docker run -d --restart=always --name=node-bitcoincash -v /mnt/volumes/bitcoincash/:/mnt/data/ -p 1050:81 magnumwallet/node-bitcoincash
+docker run -d --restart=always --name=node-bitcoinsv -v /mnt/volumes/bitcoinsv/:/mnt/data/ -p 1051:81 magnumwallet/node-bitcoinsv
 
