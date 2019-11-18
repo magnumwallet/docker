@@ -1,4 +1,6 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
+
+# ----
 
 VOLUME ["/mnt/data/"]
 SHELL ["/bin/bash", "-c"]
@@ -6,14 +8,21 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN npm install litecore
+RUN git clone https://github.com/litecoin-project/litecoin.git
+RUN mv litecoin node
+
+WORKDIR /opt/node
+RUN ./autogen.sh
+RUN ./configure --without-gui --disable-wallet
+RUN make -j$(nproc)
+
+RUN mkdir /opt/node/bin/
+RUN ln -s /opt/node/src/litecoind /opt/node/bin/node
 
 # ----
 
 COPY ./data /opt/data/
 WORKDIR /opt/data
-
-RUN ln -s /mnt/data /root/.litecoin
 
 # ----
 
@@ -22,3 +31,4 @@ COPY cmd.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["cmd.sh", ""]
+

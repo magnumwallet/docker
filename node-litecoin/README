@@ -1,8 +1,4 @@
-docker run -d --restart=always --name=node-litecoin -v /mnt/volumes/litecoin/:/mnt/data/ -p 1003:3001 -p 2003:3130 magnumwallet/node-litecoin
-
 docker build -t magnumwallet/node-litecoin ./
-docker run -it --rm -v /mnt/volumes/litecoin/:/mnt/data/ magnumwallet/node-litecoin /bin/bash
 
-# Explorer port: 3001
-# RPC port: 8732
-# p2p port: 19732
+docker run -d --restart=always --name=node-litecoin -v /mnt/volumes/litecoin/:/mnt/data/ -p 1003:81 magnumwallet/node-litecoin
+

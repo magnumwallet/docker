@@ -1,3 +1,3 @@
 #!/bin/bash
 
-/opt/node_modules/litecore/bin/litecored
+/opt/node/bin/node -datadir=/mnt/data
