@@ -1,2 +1,2 @@
-docker run -d --restart=always --name=node-bitcoinsv -v /mnt/volumes/bitcoinsv/:/data/ -p 1051:81 bitcoinsv/bitcoin-sv
+docker run -d --restart=always --name=node-bitcoinsv -v /mnt/volumes/bitcoinsv/:/data/ -p 1051:1051 bitcoinsv/bitcoin-sv
 
