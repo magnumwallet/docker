@@ -1,4 +1,4 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
 
 # ----
 
@@ -7,20 +7,17 @@ SHELL ["/bin/bash", "-c"]
 
 # ----
 
-ARG repo=anonymousbitcoin/anon
-ARG platform=ubuntu-16
-
-# ----
-
 WORKDIR /opt
-RUN curl -s https://api.github.com/repos/$repo/releases/latest | grep browser_download_url | grep $platform | cut -d '"' -f 4 | wget -qi -
-RUN tar -xf `ls -t ./ | head -1` && mv `ls -t ./ | head -1` node
-
-RUN wget https://github.com/anonymousbitcoin/anon/releases/download/v2.2.0/fetch-params-unix.sh && chmod +x fetch-params-unix.sh && ./fetch-params-unix.sh
+RUN git clone https://github.com/anonymousbitcoin/anon.git
+RUN mv anon node
 
 WORKDIR /opt/node
-RUN cp -R /opt/node/src /opt/node/bin
-RUN ln -s `find /opt/node/bin -name "*d" | head -1` /opt/node/bin/node
+RUN ./zcutil/fetch-params.sh
+RUN ./zcutil/build.sh -j$(nproc)
+RUN make -j$(nproc)
+
+RUN mkdir /opt/node/bin/
+RUN ln -s /opt/node/src/anond /opt/node/bin/node
 
 # ----
 
@@ -34,3 +31,4 @@ COPY cmd.sh /usr/local/bin/
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["cmd.sh", ""]
+
