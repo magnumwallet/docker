@@ -1,4 +1,4 @@
-FROM magnumwallet/base-full
+FROM magnumwallet/base-debian
 
 # ----
 
@@ -8,9 +8,8 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN wget https://github.com/dashpay/dash/releases/download/v0.14.0.0-rc4/dashcore-0.14.0.0-rc4-x86_64-linux-gnu.tar.gz
-RUN tar -axf dashcore-0.14.0.0-rc4-x86_64-linux-gnu.tar.gz
-RUN mv dashcore-0.14.0 node
+RUN wget https://github.com/dashpay/dash/releases/download/v0.14.0.3/dashcore-0.14.0.3-x86_64-linux-gnu.tar.gz
+RUN tar -axf dashcore-0.14.0.3-x86_64-linux-gnu.tar.gz node/
 
 WORKDIR /opt/node
 RUN ln -s /opt/node/bin/dashd /opt/node/bin/node
