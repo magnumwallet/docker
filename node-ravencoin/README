@@ -1,0 +1,4 @@
+docker build -t magnumwallet/node-ravencoin ./
+
+docker run -d --restart=always --name=node-ravencoin -v /mnt/volumes/ravencoin/:/mnt/data/ -p 1051:1000 magnumwallet/node-ravencoin
+
