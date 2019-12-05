@@ -1,3 +1,13 @@
+docker run -d --restart=always --name=node-aionr -v /mnt/volumes/aionr/db:/root/.aion -p 1545:8545 -p 1546:8546 -p 1303:30303 aionnetwork/aionr ./mainnet.sh
+
+
+
+
+
+
+
+
+
 docker build -t magnumwallet/node-aion ./
 
 docker run -d --restart=always --name=node-aion -v /mnt/volumes/aion/:/mnt/data/ -p 1004:8545 magnumwallet/node-aion

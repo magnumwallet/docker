@@ -11,7 +11,7 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main leveldb-dev && \
 #    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
     pip install aiohttp pylru plyvel websockets && \
-    pip install pyskein git+https://github.com/bitcoinplusorg/x13-hash pivx-quark-hash quark_hash x11_hash xevan-hash git+https://github.com/Jenova7/nist5_hash
+    pip install pyskein git+https://github.com/bitcoinplusorg/x13-hash pivx-quark-hash quark_hash x11_hash x16r-hash xevan-hash git+https://github.com/Jenova7/nist5_hash
 RUN pip install groestlcoin_hash git+https://github.com/MicroBitcoinOrg/RainforestPython
 RUN VERSION=$(cat /tmp/VERSION) && git clone -b $VERSION https://github.com/magnumwallet/electrumx.git && \
     cd electrumx && \

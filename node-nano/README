@@ -1,3 +1,10 @@
+https://nanonodemonitor.mgnm.rocks/
+https://1nano.co/nano-node-monitoring/
+https://nanotools.github.io/easy-nano-node/manual/ubuntu.html
+
+
+
+
 docker run -d --restart=always --name=node-nano \
   -p 7075:7075/udp \
   -p 7075:7075 \
