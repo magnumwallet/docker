@@ -13,6 +13,6 @@ services:
     ports:
      - "7075:7075/udp"
      - "7075:7075"
-     - "::1:7076:7076"
+     - "127.0.0.1:7077:7076"
     volumes:
      - "/mnt/volumes/nanonode:/root"

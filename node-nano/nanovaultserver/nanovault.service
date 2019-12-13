@@ -1,0 +1,10 @@
+[Unit]
+Description=Nanovault
+
+[Service]
+WorkingDirectory=/mnt/volumes/nanovault-server/
+ExecStart=/usr/bin/forever -c "nodemon --exitcrash --watch index.js" index.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
