@@ -1,0 +1,3 @@
+docker run -d --restart=always --name=node-kmdvote -v /mnt/volumes/kmdvote/:/mnt/data/ -p 1022:80 -p 2022:3130 magnumwallet/node-kmdvote
+
+docker build -t magnumwallet/node-kmdvote ./
