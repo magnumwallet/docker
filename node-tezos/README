@@ -1,2 +1,5 @@
+docker build -t magnumwallet/node-tezos ./
+
 chmod -R 0777 /mnt/volumes/tezos/
+
 docker run -d --restart=always --name=node-tezos -v /mnt/volumes/tezos/:/run/tezos/node/ -p 1002:8732 magnumwallet/node-tezos
