@@ -3,11 +3,15 @@ docker run -d --restart=always --name=node-parity --user root \
 -v /mnt/volumes/parity/:/home/parity/.local/share/io.parity.ethereum/ \
 parity/parity:stable --ui-interface all --jsonrpc-interface all --jsonrpc-cors all --base-path /home/parity/.local/share/io.parity.ethereum/ --config /home/parity/.local/share/io.parity.ethereum/config.toml
 
-// ---
 
-docker run -d --restart=always --name node-ethereum -v /mnt/volumes/ethereum/:/root \
--p 8545:8545 -p 30303:30303 \
+docker run -d --restart=always --name node-geth -v /mnt/volumes/geth/:/root \
+-p 8547:8545 -p 30307:30303 \
 ethereum/client-go --rpc --rpccorsdomain "*" --rpcvhosts "*" --rpcaddr 0.0.0.0 --rpcapi eth,web3 --ws --wsaddr 0.0.0.0 --wsapi eth,web3 --ipcdisable
 
-docker run -d --restart=always --name=node-parity --user root -p 8545:8545 -p 8546:8546 -p 30303:30303 -v /mnt/volumes/parity/:/home/parity/.local/share/io.parity.ethereum/ parity/parity:stable --base-path /home/parity/.local/share/io.parity.ethereum/ --config /home/parity/.local/share/io.parity.ethereum/config.toml
+// ---
+
+docker run -d --restart=always --name=node-parity --user root \
+-p 8545:8545 -p 8546:8546 -p 30303:30303 \
+-v /mnt/volumes/parity/:/home/parity/.local/share/io.parity.ethereum/ \
+parity/parity:stable --base-path /home/parity/.local/share/io.parity.ethereum/ --config /home/parity/.local/share/io.parity.ethereum/config.toml
 
