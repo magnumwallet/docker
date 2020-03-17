@@ -1,0 +1,4 @@
+docker run -d --restart=always --name=node-lynx -v /mnt/volumes/lynx/:/mnt/data/ -p 1053:1000 magnumwallet/node-lynx
+
+docker build -t magnumwallet/node-lynx ./
+docker exec -it node-lynx /opt/lynx/src/lynx-cli --datadir=/mnt/data getinfo

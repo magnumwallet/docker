@@ -1,0 +1,9 @@
+docker run -d --restart=always --name=node-etc \
+-v /mnt/volumes/etc/:/root \
+-p 30306:30303 \
+-p 8548:8548 \
+etclabscore/core-geth \
+--classic \
+--rpc --rpcport 8548 --rpcaddr 0.0.0.0
+
+ --rpccorsdomain "*" --rpcvhosts "*" --rpcaddr 0.0.0.0 --rpcapi eth,web3 --ws --wsaddr 0.0.0.0 --wsapi eth,web3 --ipcdisable
