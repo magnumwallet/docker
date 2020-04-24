@@ -1,0 +1,4 @@
+docker run -d --restart=always --name=node-ecodollar -v /mnt/volumes/ecodollar/:/mnt/data/ -p 1058:1000 magnumwallet/node-ecodollar
+
+docker build -t magnumwallet/node-ecodollar ./
+docker exec -it node-ecodollar /opt/ecodollar/src/ecodollar-cli --datadir=/mnt/data getinfo
