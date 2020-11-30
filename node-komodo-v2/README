@@ -1,9 +1,9 @@
-docker build -t node-komodo ./
+docker build -t komodo-node ./
 
-docker run -d --restart=unless-stopped --name=node-komodo -v /mnt/volumes/komodo/:/mnt/data/ -p 7770:7770 -p 7771:7771 node-komodo
+docker run -d --restart=unless-stopped --name=komodo-node -v /mnt/volumes/komodo/:/mnt/data/ -p 7770:7770 -p 7771:7771 komodo-node
 
 docker run -d --restart=unless-stopped \
-  --name electrum-komodo \
+  --name komodo-electrum \
   -v /mnt/volumes/komodo/electrum:/data \
   -e DAEMON_URL=http://komodo:password@komodo:7771 \
   -e COIN=Komodo \

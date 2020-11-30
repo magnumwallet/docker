@@ -19,15 +19,14 @@ SHELL ["/bin/bash", "-c"]
 # ----
 
 WORKDIR /opt
-RUN git clone https://github.com/jl777/komodo
-RUN mv komodo node
+RUN git clone https://github.com/jl777/komodo && cd komodo && git checkout e159b4e
 
-WORKDIR /opt/node
-RUN ./zcutil/build.sh -j$(nproc)
+WORKDIR /opt/komodo
 RUN ./zcutil/fetch-params.sh
+RUN ./zcutil/build.sh -j$(nproc)
 
-RUN mkdir /opt/node/bin
-RUN ln -s /opt/node/src/komodod /opt/node/bin/node
+RUN ln -sf /opt/komodo/src/komodo-cli /usr/local/bin/komodo-cli
+RUN ln -sf /opt/komodo/src/komodod /usr/local/bin/komodod
 
 # ----
 
